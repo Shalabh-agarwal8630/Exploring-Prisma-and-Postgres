@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:%23shalabhop@localhost:5432/venom?connect_timeout=300"
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  firstName String?
+  lastName  String?
+  password  String
+  countrycode String?
+}
+
+model Todo {
+  id          Int     @id @default(autoincrement())
+  title       String
+  done        Boolean @default(false)
+  description String?
+  userId      Int
+}
